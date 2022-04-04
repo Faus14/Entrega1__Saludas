@@ -13,4 +13,15 @@ def listar_Personas(request):
     personas=persona.objects.all()
     contexto={'personas':personas}
     return render (request,"AppCoder/listaPersonas.html",contexto)
+
+def inicio(request):
+    return render (request, "AppCoder/inicio.html")
+
+def agregarPersonas(request):
+    return render (request,"AppCoder/agregarPersonas.html")
+
+def agregarProducto(request):
+    return render (request,"AppCoder/agregarProducto.html")
+    
+    
     
