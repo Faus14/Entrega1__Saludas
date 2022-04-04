@@ -1,8 +1,10 @@
 from urllib import request
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from .models import persona
 from AppCoder.forms import personaFormulario
+from django.http.request import QueryDict
+
 
 # Create your views here.
 def persona1(request):
@@ -25,7 +27,7 @@ def agregarPersonas(request):
 def agregarProducto(request):
     return render (request,"AppCoder/agregarProducto.html")
 
-def personaFormulario(request):
+def personas(request):
 
     if request.method == 'POST':
 

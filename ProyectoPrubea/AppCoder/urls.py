@@ -5,6 +5,6 @@ from .views import agregarPersonas
 urlpatterns = [
     path('', views.inicio),
     path('persona/',views.listar_Personas),
-    path('personaFormulario/',views.personaFormulario,name="Persona"),
+    path('personaFormulario/',views.personas,name="Persona"),
     path('agregapersona/', agregarPersonas),
 ]
