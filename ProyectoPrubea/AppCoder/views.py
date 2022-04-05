@@ -1,8 +1,9 @@
 from urllib import request
 from django.http import HttpResponse
 from django.shortcuts import render,HttpResponse
-from .models import persona
-from AppCoder.forms import personaFormulario
+
+from .models import persona, producto, horario
+from AppCoder.forms import personaFormulario, horarioFormulario, productosFormulario
 from django.http.request import QueryDict
 
 
@@ -20,13 +21,7 @@ def listar_Personas(request):
 
 def inicio(request):
     return render (request, "AppCoder/inicio.html")
-
-def agregarPersonas(request):
-    return render (request,"AppCoder/agregarPersonas.html")
-
-def agregarProducto(request):
-    return render (request,"AppCoder/agregarProducto.html")
-
+    
 def personas(request):
 
     if request.method == 'POST':
@@ -48,7 +43,7 @@ def personas(request):
             mi_curso = persona(nombre = nombre, edad = edad, fechaNac = fechaNac)
             mi_curso.save()
             
-        return render(request, 'AppCoder/inicio.html', {'nombre': nombre, 'edad': edad})
+        return render(request, 'AppCoder/agregarPersonas.html', {'nombre': nombre, 'edad': edad, 'fechaNac':fechaNac})
 
     else:
 
@@ -56,5 +51,60 @@ def personas(request):
 
     return render(request, 'AppCoder/personaFormulario.html', {'miForm': mi_formulario})
     
-    
-    
+def productos (request):
+
+    if request.method == 'POST':
+
+        print(request.POST)
+
+        mi_formulario = productosFormulario(request.POST)
+
+        print(mi_formulario)
+
+        if mi_formulario.is_valid:
+
+            informacion = mi_formulario.cleaned_data
+
+            nombre= informacion['nombre']
+            stocknum= informacion['stocknum']
+            stock= informacion['stock']
+
+            mi_app = producto(nombre = nombre, stocknum = stocknum, stock = stock)
+            mi_app.save()
+            
+        return render(request, 'AppCoder/agregarProducto.html', {'nombre': nombre, 'stocknum': stocknum, 'stock': stock})
+
+    else:
+
+        mi_formulario = productosFormulario()
+
+    return render(request, 'AppCoder/productosFormulario.html', {'miForm': mi_formulario})
+
+
+def horarios(request):
+
+    if request.method == 'POST':
+
+        print(request.POST)
+
+        mi_formulario = horarioFormulario(request.POST)
+
+        print(mi_formulario)
+
+        if mi_formulario.is_valid:
+
+            informacion = mi_formulario.cleaned_data
+
+            entrada= informacion['entrada']
+            salida= informacion['salida']
+
+            mi_horario = horario(entrada = entrada, salida = salida)
+            mi_horario.save()
+            
+        return render(request, 'AppCoder/agregarHorario.html', {'entrada': entrada, 'salida': salida})
+
+    else:
+
+        mi_formulario = horarioFormulario()
+
+    return render(request, 'AppCoder/horarioFormulario.html', {'miForm': mi_formulario})

@@ -7,8 +7,14 @@
     <title>Productos</title>
 </head>
 <body>
-
-    <h1>Se ha agregado un productos {{producto}} con el stock {{stock}}</h1>
     
+    <form action="/AppCoder/productosFormulario/" method="POST">{% csrf_token %}
+    
+        {{miForm.as_p}}
+    
+        <input type="submit" value="AGREGAR">
+        
+      </form>
+
 </body>
 </html>
