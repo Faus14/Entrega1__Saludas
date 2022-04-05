@@ -1,14 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
-</head>
-<body>
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
 
-    <h1>Se ha agregado un productos {{producto}} con el stock {{stock}}</h1>
-    
-</body>
-</html>
+<section class="page-section bg-primary" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <table class="table" style = "border:solid">
+                <thead>
+                  <tr >
+                    <th scope="col" style = "border:solid">ID</th>
+                    <th scope="col" style = "border:solid">NOMBRE</th>
+                    <th scope="col" style = "border:solid">STOCK-NUMERO</th>
+                    <th scope="col" style = "border:solid">STOCK</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for pro in productos %}   
+                  <tr>
+                    <th scope="row">{{per.id}}</th>
+                    <td>{{per.nombre}}</td>
+                    <td>{{per.stocknum}}</td>
+                    <td>{{per.stock}}</td>
+                    
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

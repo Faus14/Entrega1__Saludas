@@ -17,12 +17,14 @@ def persona1(request):
 def listar_Personas(request):
     personas=persona.objects.all()
     contexto={'personas':personas}
-    return render (request,"AppCoder/listaPersonas.html",contexto)
+    return render (request,"AppCoder/agregarPersonas.html",contexto)
 
 def inicio(request):
     return render (request, "AppCoder/inicio.html")
     
 def personas(request):
+    
+   
 
     if request.method == 'POST':
 
@@ -35,6 +37,8 @@ def personas(request):
         if mi_formulario.is_valid:
 
             informacion = mi_formulario.cleaned_data
+            
+            
 
             nombre= informacion['nombre']
             edad= informacion['edad']
@@ -42,8 +46,11 @@ def personas(request):
 
             mi_curso = persona(nombre = nombre, edad = edad, fechaNac = fechaNac)
             mi_curso.save()
-            
-        return render(request, 'AppCoder/agregarPersonas.html', {'nombre': nombre, 'edad': edad, 'fechaNac':fechaNac})
+            personas=persona.objects.all()
+            contexto={'personas':personas}
+        return render (request,"AppCoder/agregarPersonas.html",contexto) 
+        
+
 
     else:
 
@@ -71,8 +78,11 @@ def productos (request):
 
             mi_app = producto(nombre = nombre, stocknum = stocknum, stock = stock)
             mi_app.save()
+            producto1=producto.objects.all()
+            contexto3={'productos':producto1}
+        return render (request,"AppCoder/agregarProducto.html",contexto3) 
             
-        return render(request, 'AppCoder/agregarProducto.html', {'nombre': nombre, 'stocknum': stocknum, 'stock': stock})
+        
 
     else:
 
@@ -100,8 +110,11 @@ def horarios(request):
 
             mi_horario = horario(entrada = entrada, salida = salida)
             mi_horario.save()
+            horarios2=horario.objects.all()
+            contexto2={'horario':horarios2}
+        return render (request,"AppCoder/agregarHorario.html",contexto2) 
             
-        return render(request, 'AppCoder/agregarHorario.html', {'entrada': entrada, 'salida': salida})
+        
 
     else:
 

@@ -1,12 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personas</title>
-</head>
-<body>
-    <h1>Se agrego {{nombre}} {{apellido}} a la base de datos</h1>
-</body>
-</html>
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<section class="page-section bg-primary" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <table class="table" style = "border:solid">
+                <thead>
+                  <tr >
+                    <th scope="col" style = "border:solid">ID</th>
+                    <th scope="col" style = "border:solid">NOMBRE</th>
+                    <th scope="col" style = "border:solid">EDAD</th>
+                    <th scope="col" style = "border:solid">FECHA_NAC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for per in personas %}   
+                  <tr>
+                    <th scope="row">{{per.id}}</th>
+                    <td>{{per.nombre}}</td>
+                    <td>{{per.edad}}</td>
+                    <td>{{per.fechaNac}}</td>
+                    
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios</title>
-</head>
-<body>
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
 
-    <h1>Empleado entro {{entrada}} y salio {{salida}}</h1>
-    
-</body>
-</html>
+<section class="page-section bg-primary" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <table class="table" style = "border:solid">
+                <thead>
+                  <tr >
+                    <th scope="col" style = "border:solid">ID</th>
+                    <th scope="col" style = "border:solid">ENTRADA</th>
+                    <th scope="col" style = "border:solid">SALIDA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for hor in horario %}   
+                  <tr>
+                    <th scope="row">{{hor.id}}</th>
+                    <td>{{hor.entrada}}</td>
+                    <td>{{hor.salida}}</td>
+            
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
