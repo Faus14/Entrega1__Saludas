@@ -20,7 +20,7 @@
         <!-- SimpleLightbox plugin CSS-->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{%static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'AppCoder/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -30,11 +30,11 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
                         <a class="nav-link" href="{% url 'personaFormulario' %}">Personas</a>
                         <a class="nav-link" href="{% url 'productosFormulario' %}">Productos</a>
                         <a class="nav-link" href="{% url 'horarioFormulario' %}">Horarios</a>
-                        <a class="nav-link" href="#contact">Contact</a>
+                        
                     </ul>
                 </div>
             </div>
