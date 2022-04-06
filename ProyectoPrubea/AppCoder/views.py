@@ -111,10 +111,9 @@ def horarios(request):
             mi_horario = horario(entrada = entrada, salida = salida)
             mi_horario.save()
             horarios2=horario.objects.all()
-            contexto2={'horario':horarios2}
-        return render (request,"AppCoder/agregarHorario.html",contexto2) 
-            
-        
+            contexto2={'horarios':horarios2}
+
+        return render(request,"AppCoder/agregarHorario.html",contexto2) 
 
     else:
 

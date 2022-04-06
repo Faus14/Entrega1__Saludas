@@ -10,8 +10,8 @@ class persona(models.Model):
     
 class horario(models.Model):
     
-    entrada= models.IntegerField('fechaentrada')
-    salida=models.IntegerField('fechasalida')
+    entrada= models.IntegerField('entrada')
+    salida=models.IntegerField('salida')
     
 class producto(models.Model):
     
