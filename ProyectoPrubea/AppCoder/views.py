@@ -1,4 +1,6 @@
+from logging.config import valid_ident
 from urllib import request
+from wsgiref import validate
 from django.http import HttpResponse
 from django.shortcuts import render,HttpResponse
 
@@ -120,3 +122,31 @@ def horarios(request):
         mi_formulario = horarioFormulario()
 
     return render(request, 'AppCoder/horarioFormulario.html', {'miForm': mi_formulario})
+
+def busquedaPersona(request):
+    return render(request, 'AppCoder/busquedaPersona.html')
+
+def buscar(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+        persona2 = persona.objects.filter(nombre = nombre)
+        edad = request.GET['edad']
+        persona3 = persona.objects.filter(edad = edad)
+        return render(request, "AppCoder/resultadosBusqueda.html",
+        {'persona2':persona2,
+        'persona3':persona3, 
+        'nombre': nombre, 
+        'edad': edad, 
+        })
+
+    else:
+        return HttpResponse('No buscaste ningun dato, volve a intentar')
+    
+
+
+
+
+    
+

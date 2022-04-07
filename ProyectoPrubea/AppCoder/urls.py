@@ -8,4 +8,7 @@ urlpatterns = [
     path('personaFormulario/',views.personas,name="personaFormulario"),
     path('productosFormulario/',views.productos, name="productosFormulario"),
     path('horarioFormulario/',views.horarios, name="horarioFormulario"),
+    path('busquedaPersona/',views.busquedaPersona, name="busquedaPersona"),
+    path('buscar/',views.buscar, name="buscar")
+
 ]

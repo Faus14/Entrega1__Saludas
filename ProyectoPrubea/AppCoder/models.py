@@ -7,7 +7,9 @@ class persona(models.Model):
     edad=models.IntegerField('edad')
     fechaNac = models.DateField('fechaNac', auto_now= False, auto_now_add=False, blank=True, null=True)  
 
-    
+    def __str__(self) -> str:
+        return f'{self.nombre}'
+        
 class horario(models.Model):
     
     entrada= models.IntegerField('entrada')
